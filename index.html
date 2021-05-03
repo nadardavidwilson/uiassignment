@@ -1,0 +1,118 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/bs-3.3.5/jq-2.1.4,dt-1.10.8/datatables.min.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/r/bs-3.3.5/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css" integrity="sha384-wESLQ85D6gbsF459vf1CiZ2+rr+CsxRY0RpiF1tLlQpDnAgg6rwdsUF1+Ics2bni" crossorigin="anonymous">
+            <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&display=swap" rel="stylesheet">
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+            <link href="https://nightly.datatables.net/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+            <script src="https://nightly.datatables.net/js/jquery.dataTables.js"></script>
+        </head>
+    <body>
+        <section>
+            
+    <div class="mastercontainer">
+
+    <div class="mid-container">
+        <div class="main-container" style="overflow-x:auto;">
+        
+        <h1>Filter </h1><h1 style="color: rgb(201, 194, 194);">airports</h1>
+        <i style="display: inline; float: right;margin-top: 20px;" class="fa fa-th-large" aria-hidden="true"></i>
+            <br><br>
+            <div class="type-filter">
+                <h2>Type</h2><div class="filyerdesk"><h2>Filter by search</h2></div>
+            </div>
+        <div class="checkbox-search">
+            <div class="checkbox-part">
+                
+                
+                <input id="small"name="pos" type="checkbox" value="small">
+                <label > Small</label><br>
+                <input id="medium" value="medium"type="checkbox">
+                <label > Medium</label>
+                <input id="large" value="large" type="checkbox">
+                <label > Large</label>
+                <input id="heliport" value="heliport" type="checkbox">
+                <label > Helport</label>
+                <input id="closed" value="closed" type="checkbox">
+                <label > Closed</label>
+                
+
+            
+            </div>
+            <div class="filtermob"><h2>Filter by search</h2></div>
+            
+            <div class="Search-part">
+                <input id="search" type="text" />
+                </div>
+        </div>
+        <div style="overflow-x:auto;">
+            <div class="container">
+
+                <table id="example" class="table table-bordered">
+                        <thead>
+                            <tr>
+                        <th>Name</th>
+                        <th>ICAO</th>
+                        <th>IATA</th>
+                        <th>Elev</th>
+                        <th>Lat.</th>
+                        <th>Long.</th>
+                        <th>Type</th>
+                            </tr>
+                        </thead>
+                </table>
+                    
+                </div>
+        </div>
+
+        
+
+        </div>
+        </div>
+        </div>  
+
+        
+            
+        <script type="text/javascript">
+    $(document).ready(function() {
+        $('#example').DataTable( {
+            
+            "ajax": "airports.json",
+            "columns": [
+                { "data": "name" },
+                { "data": "icao" },
+                { "data": "iata" },
+                { "data": "elevation" },
+                { "data": "latitude" },
+                { "data": "longitude" },
+                { "data": "type" }
+            ]
+        
+            ,"lengthMenu": [[4, 25, 50, -1], [5, 25, 50, "All"]]
+        
+        } );
+    } );
+
+
+    $('#search').on( 'keyup', function () {
+        var table = $('#example').DataTable();
+
+        table.search( this.value ).draw();
+    } );
+
+
+    </script>
+            
+        </section>
+
+    </body>
+    </html>
